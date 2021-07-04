@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ParksLookup.Models;
@@ -47,5 +50,42 @@ namespace ParksLookup.Controllers
 
         return park;
     }
+
+    // PUT: api/Parks/2
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Put(int id, Park park)
+    {
+      if (id != park.ParkId)
+      {
+        return BadRequest();
+      }
+
+      _db.Entry(park).State = EntityState.Modified;
+
+      try
+      {
+        await _db.SaveChangesAsync();
+      }
+      catch (DbUpdateConcurrencyException)
+      {
+        if (!ParkExists(id))
+        {
+          return NotFound();
+        }
+        else
+        {
+          throw;
+        }
+      }
+
+      return NoContent();
+    }
+
+    private bool ParkExists(int id)
+    {
+      return _db.Parks.Any(e => e.ParkId == id);
+    }
+
   }
 }
