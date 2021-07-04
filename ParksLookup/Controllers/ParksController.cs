@@ -31,7 +31,21 @@ namespace ParksLookup.Controllers
       _db.Parks.Add(park);
       await _db.SaveChangesAsync();
 
-      return CreatedAtAction("Post", new { id = park.ParkId }, park);
+      return CreatedAtAction(nameof(GetPark), new{ id = park.ParkId }, park);
+    }
+
+    // GET: api/Parks/2
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Park>> GetPark(int id)
+    {
+        var park = await _db.Parks.FindAsync(id);
+
+        if (park == null)
+        {
+            return NotFound();
+        }
+
+        return park;
     }
   }
 }
