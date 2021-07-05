@@ -22,9 +22,15 @@ namespace ParksLookup.Controllers
 
     // GET api/parks
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Park>>> Get()
+    public async Task<ActionResult<IEnumerable<Park>>> Get(string type)
     {
-      return await _db.Parks.ToListAsync();
+      var query = _db.Parks.AsQueryable();
+
+      if (type != null)
+      {
+        query = query.Where(entry => entry.Type == type);
+      }
+      return await query.ToListAsync();
     }
 
     // POST api/parks
