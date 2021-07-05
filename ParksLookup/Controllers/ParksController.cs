@@ -22,7 +22,7 @@ namespace ParksLookup.Controllers
 
     // GET api/parks
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Park>>> Get(string type)
+    public async Task<ActionResult<IEnumerable<Park>>> Get(string type, string name)
     {
       var query = _db.Parks.AsQueryable();
 
@@ -30,6 +30,11 @@ namespace ParksLookup.Controllers
       {
         query = query.Where(entry => entry.Type == type);
       }
+
+      if (name != null)
+      {
+        query = query.Where(entry => entry.Name == name);
+      }      
       return await query.ToListAsync();
     }
 
