@@ -54,10 +54,6 @@ MySQL is a type of database software used to create, edit, query, and manage SQL
 - Navigate to the `ParksLookup` folder in the command line
 - Use the command `dotnet restore`
 
-<details>
-
-  <summary>Expand for Database Installation Essentials!</summary>
-
 ### Database Connection
 
 Create a connection string to connect the database to the web application
@@ -100,7 +96,7 @@ To run the API locally:
 Then to view the swagger documentation open http://localhost:5000/swagger/
 ![Swagger documentation](/images/swagger.png)
 
-User could also utilize Postman [Download Here](https://www.postman.com/downloads/) to make all the http requests.
+User could also utilize Postman [Download Here]((https://www.postman.com/downloads/)) to make all the http requests.
 
 #### CRUD Structure
 ```
@@ -119,17 +115,6 @@ GET /api/Parks?type=national
 GET /api/Parks?name=Arches
 GET /api/parks/2
 ```
-
-
-</details>
-
-##### Swagger
-This project utilizes swagger documentation. To view the documentation while the API is running locally open your browser to `http://localhost:5000/swagger/` You can also try out all the API calls with swagger at that address.
-To run the API locally:
-1. In your terminal navigate to the ParksLookup folder
-2. run dotnet run
-Then to view the swagger documentation open http://localhost:5000/swagger/
-![Swagger documentation](/images/swagger.png)
 
 ## Known Bugs/Future Improvements
 
