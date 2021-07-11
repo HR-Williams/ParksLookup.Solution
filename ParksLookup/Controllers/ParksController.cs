@@ -22,10 +22,11 @@ namespace ParksLookup.Controllers
 
     // GET api/parks
     /// <summary>
-    /// Gets all parks. Chain parameters on query to get park by type or name. Parameters include "type" and "name." For example `api/Parks?type=state` gets all state parks. `api/Parks?type=national` gets all national parks. `api/Parks?name=Arches` gets Arches park.
+    /// Gets all parks. Chain parameters on query to get park by type or name. Parameters include "type" "location" and "name." For example `api/Parks?type=state` gets all state parks, `api/Parks?type=national` gets all national parks. Other example queries by parameters include api/Parks?location=Utah` `api/Parks?name=Arches`
     /// </summary> 
     /// <param name="type"></param>
     /// <param name="name"></param>
+    /// <param name="location"></param>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Park>>> Get(string type, string name, string location)
     {
