@@ -127,8 +127,6 @@ If any errors or bugs occur with installation, delete both bin and obj folders a
 ## Technologies Used
 
 - .NET Core 5.0.1
-- ASP.NET Core MVC
-- ASP.NET Core Razor Pages
 - Entity Framework Core
 - GitHub
 - MySQL
