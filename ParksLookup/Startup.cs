@@ -6,6 +6,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using ParksLookup.Models;
 using Microsoft.OpenApi.Models;
+using System;
+using System.Reflection;
+using System.IO;
 
 namespace ParksLookup
 {
@@ -27,7 +30,19 @@ namespace ParksLookup
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ParksLookup", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ParksLookup", Version = "v1",
+                Description = "A simple example ASP.NET Core Web API about state and national parks",
+                Contact = new OpenApiContact
+                {
+                    Name = "HR Williams",
+                    Email = "halrubinwilliams@gmail.com",
+                    Url = new Uri("https://github.com/HR-Williams"),
+                },
+                });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
             });
         }   
 
@@ -38,9 +53,12 @@ namespace ParksLookup
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseSwagger();
             // app.UseHttpsRedirection();
-
+             app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Parks Lookup API V1");
+            });
             app.UseRouting();
 
             app.UseAuthorization();
