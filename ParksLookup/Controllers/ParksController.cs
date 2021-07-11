@@ -21,6 +21,10 @@ namespace ParksLookup.Controllers
     }
 
     // GET api/parks
+    /// <summary>
+    /// Gets all parks of a certain type. Currently the only types are "state" and "national". To get all state parks the Get request URL is http://localhost:5000/api/Parks?type=state
+    /// </summary>
+    /// <param name="type"></param> 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Park>>> Get(string type, string name)
     {
@@ -94,6 +98,10 @@ namespace ParksLookup.Controllers
     }
 
      // DELETE: api/Parks/5
+     /// <summary>
+    /// Deletes a specific Park.
+    /// </summary>
+    /// <param name="id"></param>     
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeletePark(int id)
     {
