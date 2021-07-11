@@ -93,7 +93,7 @@ Create a connection string to connect the database to the web application
 7. Click `Start Import`
 
 ### View in browser or postman
-This project utilizes swagger documentation. To view the documentation while the API is running locally open your browser to `http://localhost:5000/swagger/` You can also try out all the API calls with swagger at that address.
+This project utilizes swagger documentation. To view the documentation while the API is running locally open your browser to `http://localhost:5000/swagger/` You can utilize the API calls with swagger at that address.
 To run the API locally:
 1. In your terminal navigate to the ParksLookup folder
 2. run dotnet run
@@ -131,9 +131,9 @@ To run the API locally:
 Then to view the swagger documentation open http://localhost:5000/swagger/
 ![Swagger documentation](/images/swagger.png)
 
-## Known Bugs
+## Known Bugs/Future Improvements
 
-I would like to change the schema and and more parameters to the get route to make for more user friendly queries.
+I would like to change the schema and and more parameters in the get route to make for more user friendly queries.
 
 ## Support and Contact Details
 
