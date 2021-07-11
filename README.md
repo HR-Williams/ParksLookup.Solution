@@ -96,7 +96,7 @@ To run the API locally:
 Then to view the swagger documentation open http://localhost:5000/swagger/
 ![Swagger documentation](/images/swagger.png)
 
-User could also utilize Postman [Download Here]((https://www.postman.com/downloads/)) to make all the http requests.
+User could also utilize Postman to make all the API requests. [Download Postman Here](https://www.postman.com/downloads/)
 
 #### CRUD Structure
 ```
@@ -118,7 +118,7 @@ GET /api/parks/2
 
 ## Known Bugs/Future Improvements
 
-I would like to change the schema and and more parameters in the get route to make for more user friendly queries.
+I would like to change the schema and add more parameters in the get method to make for more user friendly queries.
 
 ## Support and Contact Details
 
