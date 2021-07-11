@@ -27,7 +27,7 @@ namespace ParksLookup.Controllers
     /// <param name="type"></param>
     /// <param name="name"></param>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Park>>> Get(string type, string name)
+    public async Task<ActionResult<IEnumerable<Park>>> Get(string type, string name, string location)
     {
       var query = _db.Parks.AsQueryable();
 
@@ -39,8 +39,14 @@ namespace ParksLookup.Controllers
       if (name != null)
       {
         query = query.Where(entry => entry.Name == name);
-      }      
+      }
+
+      if (location != null)
+      {
+        query = query.Where(entry => entry.Location == location);
+      }         
       return await query.ToListAsync();
+      
     }
     /// <summary>
     /// Adds a specific park.
