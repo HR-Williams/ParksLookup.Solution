@@ -22,9 +22,10 @@ namespace ParksLookup.Controllers
 
     // GET api/parks
     /// <summary>
-    /// Gets all parks of a certain type. Currently the only types are "state" and "national". To get all state parks the Get request URL is http://localhost:5000/api/Parks?type=state
-    /// </summary>
-    /// <param name="type"></param> 
+    /// Gets all parks. Chain parameters on query to get park by type or name. Parameters include "type" and "name." For example `api/Parks?type=state` gets all state parks. `api/Parks?type=national` gets all national parks. `api/Parks?name=Arches` gets Arches park.
+    /// </summary> 
+    /// <param name="type"></param>
+    /// <param name="name"></param>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Park>>> Get(string type, string name)
     {
@@ -41,7 +42,10 @@ namespace ParksLookup.Controllers
       }      
       return await query.ToListAsync();
     }
-
+    /// <summary>
+    /// Adds a specific park.
+    /// </summary> 
+    /// <param name="park"></param>
     // POST api/parks
     [HttpPost]
     public async Task<ActionResult<Park>> Post(Park park)
@@ -53,6 +57,10 @@ namespace ParksLookup.Controllers
     }
 
     // GET: api/Parks/2
+    /// <summary>
+    /// Returns a specific park.
+    /// </summary> 
+    /// <param name="id"></param>
     [HttpGet("{id}")]
     public async Task<ActionResult<Park>> GetPark(int id)
     {
@@ -68,6 +76,11 @@ namespace ParksLookup.Controllers
 
     // PUT: api/Parks/2
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    /// <summary>
+    /// Edits a specific park.
+    /// </summary> 
+    /// <param name="id"></param>
+    /// <param name="park"></param>
     [HttpPut("{id}")]
     public async Task<IActionResult> Put(int id, Park park)
     {
